@@ -29,7 +29,7 @@ public class ConectarBD {
         try {
             this.servidor = servidor;
             this.database = database;
-            Class.forName(".commysql.Driver");
+            Class.forName("com.mysql.jdbc.Driver");
             url = "jdbc:mysql://" + servidor +"/" + database + "?autoReconnect=true&useSSL=false";
             conexion = DriverManager.getConnection(url,usuario,password);
             System.out.println("Conexion a base de datos: " + url + "....OK");

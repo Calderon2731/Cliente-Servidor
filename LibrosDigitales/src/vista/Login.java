@@ -4,19 +4,21 @@
  */
 package vista;
 
+import com.mysql.jdbc.PreparedStatement;
+import javax.swing.JOptionPane;
 import modelo.ConectarBD;
+import java.sql.ResultSet;
 
 /**
  *
  * @author kasak
  */
 public class Login extends javax.swing.JFrame {
-
-    /**
-     * Creates new form Login
-     */
+    
+     ConectarBD  conn = new ConectarBD();
     public Login() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -33,7 +35,7 @@ public class Login extends javax.swing.JFrame {
         btnLogin = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtLoginUsuario = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
         txtContrasenaLogin = new javax.swing.JPasswordField();
         jPanel2 = new javax.swing.JPanel();
         btnRegistro = new javax.swing.JButton();
@@ -66,9 +68,9 @@ public class Login extends javax.swing.JFrame {
 
         jLabel2.setText("Contraseña");
 
-        txtLoginUsuario.addActionListener(new java.awt.event.ActionListener() {
+        txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLoginUsuarioActionPerformed(evt);
+                txtUsuarioActionPerformed(evt);
             }
         });
 
@@ -93,7 +95,7 @@ public class Login extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
-                                .addComponent(txtLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -106,7 +108,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtLoginUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -143,7 +145,12 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Estudiante" }));
+        comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Administrador", "Estudiante" }));
+        comboCargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCargoActionPerformed(evt);
+            }
+        });
 
         jLabel7.setText("Correo");
 
@@ -232,22 +239,51 @@ public class Login extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtLoginUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLoginUsuarioActionPerformed
+    private void txtUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsuarioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLoginUsuarioActionPerformed
+    }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void txtContrasenaLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContrasenaLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContrasenaLoginActionPerformed
 
     private void btnRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistroActionPerformed
-        // TODO add your handling code here:
+       
+        String nombre = txtNombre.getText();
+        int identificacion = Integer.parseInt(txtIdentificacion.getText());
+        String correo = txtCorreo.getText();
+        String contrasenna = txtContrasenna.getText();
+        String cargo = comboCargo.getSelectedItem().toString();
+        
+        //validacion
+        
+        if (nombre.isEmpty() || contrasenna.isEmpty() || correo.isEmpty()){
+           JOptionPane.showMessageDialog(null,"complete datos!");
+        }else{
+            if (cargo.equalsIgnoreCase("Seleccionar")){
+             JOptionPane.showMessageDialog(null, "seleccione cargo");
+            }
+            if(cargo.equalsIgnoreCase("Seleccionar")) {
+             JOptionPane.showMessageDialog(null, "seleccione cargo");
+            }else{
+                try {
+                    String sqlConsulta = "INSERT into usuarios(nombre,identificacion,correo,contrasenna,cargo) values('"+nombre+"','"+identificacion+"','"+correo+"','"+contrasenna+"','"+cargo+"')";
+                    
+                    PreparedStatement ps = (PreparedStatement) conn.crearPreparedStatment(sqlConsulta);
+                    ps.executeUpdate();
+                    limpiar();
+                JOptionPane.showMessageDialog(null, "datos registrados correctamente");
+                } catch (Exception e) {
+                     JOptionPane.showMessageDialog(null, "no se pudo registrar datos" + e);
+                }
+            }
+        }
     }//GEN-LAST:event_btnRegistroActionPerformed
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -268,9 +304,45 @@ public class Login extends javax.swing.JFrame {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
 
-        ConectarBD  conn = new ConectarBD();
+        String usuario = txtUsuario.getText();
+        String contrasennaLogin = txtContrasenaLogin.getText();
+        //validar 
+        if (!usuario.equals("") || !contrasennaLogin.equals("")){
+            // contiene datos, por lo tanto, existen personas
+            try {
+                PreparedStatement ps = (PreparedStatement) conn.crearPreparedStatment("SELECT Cargo FROM usuarios WHERE Correo = '"+usuario+"' and contrasenna = '"+contrasennaLogin+"'");
+                 ResultSet rs = ps.executeQuery();
+                 if (rs.next()) {
+                    String cargo = rs.getString("Cargo");
+                     if (cargo.equalsIgnoreCase("Estudiante")) {
+                         //redirecciona a otro formulario
+                         Estudiante es = new Estudiante();
+                         dispose();
+                         es.setVisible(true);
+                     }
+                     if (cargo.equalsIgnoreCase("Administrador")) {
+                         Administrador ad = new Administrador();
+                         dispose();
+                         ad.setVisible(true);
+                     }
+                }else{
+                     JOptionPane.showMessageDialog(rootPane, "Usuario o contrasenna incorrecta");
+                 }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "no se puede iniciar sesion: ");
+                
+            }
+            
+        }else{
+            JOptionPane.showMessageDialog(null, "complete los campos porfavor");
+        }
+       
       
     }//GEN-LAST:event_btnLoginActionPerformed
+
+    private void comboCargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCargoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -326,7 +398,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JPasswordField txtContrasenna;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtIdentificacion;
-    private javax.swing.JTextField txtLoginUsuario;
     private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
-}
+
+
+public void limpiar(){
+    txtNombre.setText("");
+    txtIdentificacion.setText("");
+    txtCorreo.setText("");
+    txtContrasenna.setText("");
+}}
