@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Repositorio_Local/Cliente-Servidor/LibrosDigitales/src/vista/Login.java</file>
+            <file>file:/C:/Repositorio_Local/Cliente-Servidor/LibrosDigitales/src/modelo/MetodosModelo.java</file>
             <file>file:/C:/Repositorio_Local/Cliente-Servidor/LibrosDigitales/src/modelo/ConectarBD.java</file>
+            <file>file:/C:/Repositorio_Local/Cliente-Servidor/LibrosDigitales/src/vista/Login.java</file>
+            <file>file:/C:/Repositorio_Local/Cliente-Servidor/LibrosDigitales/src/entidades/Libro.java</file>
         </group>
     </open-files>
 </project-private>

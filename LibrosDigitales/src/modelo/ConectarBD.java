@@ -10,8 +10,21 @@ public class ConectarBD {
     private String usuario = "root";
     private String password = "";
     private String url = "";
+
+    public ConectarBD() {
+       try {
+            Class.forName("com.mysql.jdbc.Driver");
+            url = "jdbc:mysql://" + servidor +"/" + database + "?autoReconnect=true&useSSL=false";
+            conexion = DriverManager.getConnection(url,usuario,password);
+            System.out.println("Conexion a base de datos: " + url + "....OK");
+        }catch(SQLException e) {
+            System.out.println(e.getMessage());          
+        }catch(ClassNotFoundException e){
+            System.out.println(e.getMessage());     
+        }  
+    }
     
-    public ConectarBD(){
+    public Connection ConectarBD(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
             url = "jdbc:mysql://" + servidor +"/" + database + "?autoReconnect=true&useSSL=false";
@@ -21,7 +34,8 @@ public class ConectarBD {
             System.out.println(e.getMessage());          
         }catch(ClassNotFoundException e){
             System.out.println(e.getMessage());     
-        }      
+        }  
+        return conexion;
     }
     
     public ConectarBD(String servidor, String database, String usuario, String password)

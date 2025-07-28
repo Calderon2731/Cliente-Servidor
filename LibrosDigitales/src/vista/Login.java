@@ -275,14 +275,19 @@ public class Login extends javax.swing.JFrame {
                 if (rs.next()) {
                     String cargo = rs.getString("Cargo");
                     if (cargo.equalsIgnoreCase("Estudiante")) {
+                        
                         //redirecciona a otro formulario
                         Estudiante es = new Estudiante();
                         dispose();
                         es.setVisible(true);
+                        //redireccion a otra ventana el codigo de arriba
                     }
                     if (cargo.equalsIgnoreCase("Administrador")) {
+                        //dirige a otra ventana
                         Administrador ad = new Administrador();
+                       
                         dispose();
+                        
                         ad.setVisible(true);
                     }
                 }else{
