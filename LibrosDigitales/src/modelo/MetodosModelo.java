@@ -6,14 +6,17 @@ import com.mysql.jdbc.PreparedStatement;
 import entidades.Libro;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class MetodosModelo extends ConectarBD{
     
-    public boolean registrarLibro(Libro libro){
+    public boolean registrar(Libro libro){
         ConectarBD conn = new ConectarBD();
         PreparedStatement ps;
-        String sql = "INSERT INTO Libro ((Id, Codigo, Nombre, Editorial,Genero) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO Libro (Codigo, Nombre, Editorial, Genero) VALUES (?,?,?,?)";
         try {
          ps = (PreparedStatement) conn.crearPreparedStatment(sql);  
         ps.setString(1, libro.getCodigo());
@@ -30,20 +33,68 @@ public class MetodosModelo extends ConectarBD{
         }
     }
     
+    public ArrayList<Libro> todoLibros(){
+        ArrayList<Libro> miListaLibro = new ArrayList<>();
+        
+        try {
+             ConectarBD conn = new ConectarBD();
+             Statement st = (Statement) conn.CrearStatment();
+             ResultSet rs = st.executeQuery("SELECT * FROM libro");
+             while(rs.next()){
+                 Libro lib = new Libro(rs.getInt("iD"),
+                                        rs.getString("codigo"),
+                                        rs.getString("nombre"),
+                                        rs.getString("editorial"),
+                                        rs.getString("genero"));
+                 miListaLibro.add(lib);
+             }
+             rs.close();
+             conn.cerrarConexion();
+        } catch (SQLException e) {
+          Logger.getLogger(MetodosModelo.class.getName()).log(Level.SEVERE,null,e);  
+        }
+        return miListaLibro;
+    }
+    
+    public ArrayList<Libro> BuscarLibroNombre(String nombre){
+        ArrayList<Libro> miListaLibro = new ArrayList<>(); 
+        try {
+            ConectarBD conn = new ConectarBD();
+            PreparedStatement sql = (PreparedStatement) conn.crearPreparedStatment("SELECT * FROM Libro WHERE nombre like ?");
+            nombre = '%' + nombre + '%';
+            ResultSet rs = sql.executeQuery("SELECT * FROM libro");
+            while(rs.next()){
+                 Libro lib = new Libro(rs.getInt("iD"),
+                                        rs.getString("codigo"),
+                                        rs.getString("nombre"),
+                                        rs.getString("editorial"),
+                                        rs.getString("genero"));
+                 miListaLibro.add(lib);
+             }
+            rs.close();
+            conn.cerrarConexion();
+        } catch (SQLException e) {
+            Logger.getLogger(MetodosModelo.class.getName()).log(Level.SEVERE,null,e);              
+        }
+        return miListaLibro;
+    }
+    
     public boolean modificar(Libro libro){
         ConectarBD conn = new ConectarBD();
         PreparedStatement ps;
         
-         String sql = "UPDATE libro SET Codigo=?, Nombre=?, Editorial=? Genero? WHERE Id=?";
+         String sql = "UPDATE libro SET Codigo=?, Nombre=?, Editorial=?, Genero=? WHERE Id=?";
          
          try{
              ps = (PreparedStatement) conn.crearPreparedStatment(sql);
+             
              ps.setString(1, libro.getCodigo());
              ps.setString(2, libro.getNombre());
              ps.setString(3, libro.getEditorial());
              ps.setString(4, libro.getGenero());
              ps.setInt(5, libro.getId());
              ps.execute();
+             
              return true;
          }catch(SQLException e){
              System.err.println(e);
@@ -56,11 +107,11 @@ public class MetodosModelo extends ConectarBD{
     public boolean eliminar(Libro libro){
         ConectarBD conn = new ConectarBD();
         PreparedStatement ps;
-        String sql = "DELETE FROM Libro WHERE =?";
+        String sql = "DELETE FROM Libro WHERE codigo=?";
         
         try{
             ps = (PreparedStatement) conn.crearPreparedStatment(sql);
-            ps.setInt(1, libro.getId());
+            ps.setString(1, libro.getCodigo());
             ps.execute();
             return true;
         }catch(SQLException e){

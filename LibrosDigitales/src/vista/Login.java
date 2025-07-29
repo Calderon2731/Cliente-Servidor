@@ -285,10 +285,9 @@ public class Login extends javax.swing.JFrame {
                     if (cargo.equalsIgnoreCase("Administrador")) {
                         //dirige a otra ventana
                         Administrador ad = new Administrador();
-                       
                         dispose();
-                        
                         ad.setVisible(true);
+                        ad.setLocationRelativeTo(null);
                     }
                 }else{
                     JOptionPane.showMessageDialog(rootPane, "Usuario o contrasenna incorrecta");

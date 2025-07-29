@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 17-07-2025 a las 06:56:09
+-- Tiempo de generación: 30-07-2025 a las 00:13:16
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `proyectocs`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `libro`
+--
+
+CREATE TABLE `libro` (
+  `Id` int(11) NOT NULL,
+  `Codigo` varchar(50) NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
+  `Editorial` varchar(30) NOT NULL,
+  `Genero` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `libro`
+--
+
+INSERT INTO `libro` (`Id`, `Codigo`, `Nombre`, `Editorial`, `Genero`) VALUES
+(1, '1', 'CienciaDeDatos', 'RanMa', 'cientifico'),
+(2, '2', 'Estructura de datos', 'RanMa', 'Noliterario');
 
 -- --------------------------------------------------------
 
@@ -49,6 +71,12 @@ INSERT INTO `usuarios` (`id`, `nombre`, `identificacion`, `correo`, `contrasenna
 --
 
 --
+-- Indices de la tabla `libro`
+--
+ALTER TABLE `libro`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -57,6 +85,12 @@ ALTER TABLE `usuarios`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `libro`
+--
+ALTER TABLE `libro`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`

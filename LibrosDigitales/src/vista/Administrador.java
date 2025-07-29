@@ -1,8 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vista;
+
+import controlador.LibroController;
+import entidades.Libro;
+import modelo.MetodosModelo;
 
 
 public class Administrador extends javax.swing.JFrame {
@@ -33,6 +34,11 @@ public class Administrador extends javax.swing.JFrame {
         btnMenu.setText("Menu");
 
         mitLibro.setText("Gestionar Libros");
+        mitLibro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mitLibroActionPerformed(evt);
+            }
+        });
         btnMenu.add(mitLibro);
 
         mitConsultaLibros.setText("ConsultarLibros");
@@ -77,6 +83,18 @@ public class Administrador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void mitLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitLibroActionPerformed
+             /*GL.setVisible(true);
+        GL.setLocationRelativeTo(null);*/   
+        Libro lib = new Libro();
+        MetodosModelo MetodoModelo = new MetodosModelo();
+        GestionarLibro GL = new GestionarLibro();
+        LibroController controlador = new LibroController(lib,MetodoModelo,GL);
+       
+        
+        
+    }//GEN-LAST:event_mitLibroActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

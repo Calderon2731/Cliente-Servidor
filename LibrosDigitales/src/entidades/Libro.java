@@ -9,6 +9,7 @@ private String nombre;
 private String editorial;
 private String genero;
 
+
     public Libro(int id, String codigo, String nombre, String editorial, String genero) {
         this.id = id;
         this.codigo = codigo;
@@ -16,6 +17,15 @@ private String genero;
         this.editorial = editorial;
         this.genero = genero;
     }
+    
+        public Libro( String codigo, String nombre, String editorial, String genero){
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.editorial = editorial;
+        this.genero = genero;
+    }
+    
+    
 
     public Libro() {
         this.id = 0;
@@ -24,7 +34,10 @@ private String genero;
         this.editorial = "";
         this.genero = "";
     }
-
+    public Libro(int id){    
+    }
+    
+    
     public int getId() {
         return id;
     }
