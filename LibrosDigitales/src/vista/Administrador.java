@@ -29,17 +29,19 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 60, 242, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apoyo (1).png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 120, 140));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/admin.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 167));
 
         jLabel3.setBackground(new java.awt.Color(255, 51, 0));
         jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 51));
         jLabel3.setText("BIENVENIDO A MENU ADMINISTRADOr");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 25));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 25));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hola.png"))); // NOI18N
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 60, 60));
+        jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel5.setText("HOLA");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 70, -1));
 
         btnMenu.setBackground(new java.awt.Color(255, 51, 0));
         btnMenu.setForeground(new java.awt.Color(0, 0, 51));
