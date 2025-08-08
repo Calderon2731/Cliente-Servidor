@@ -18,6 +18,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         MenuDeBarra = new javax.swing.JMenuBar();
         btnMenu = new javax.swing.JMenu();
         mitLibro = new javax.swing.JMenuItem();
@@ -25,14 +26,27 @@ public class Administrador extends javax.swing.JFrame {
         version = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 60, 242, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/estanteriaMenu.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apoyo (1).png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 120, 140));
 
-        jLabel3.setText("HOLA!! BIENVENIDO A MENU DE ADMINISTRADOR");
+        jLabel3.setBackground(new java.awt.Color(255, 51, 0));
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel3.setText("BIENVENIDO A MENU ADMINISTRADOr");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, 25));
 
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/hola.png"))); // NOI18N
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 60, 60));
+
+        btnMenu.setBackground(new java.awt.Color(255, 51, 0));
+        btnMenu.setForeground(new java.awt.Color(0, 0, 51));
         btnMenu.setText("Menu");
 
+        mitLibro.setBackground(new java.awt.Color(255, 51, 0));
+        mitLibro.setForeground(new java.awt.Color(0, 0, 51));
         mitLibro.setText("Gestionar Libros");
         mitLibro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -41,45 +55,19 @@ public class Administrador extends javax.swing.JFrame {
         });
         btnMenu.add(mitLibro);
 
+        mitConsultaLibros.setBackground(new java.awt.Color(255, 51, 0));
+        mitConsultaLibros.setForeground(new java.awt.Color(0, 0, 51));
         mitConsultaLibros.setText("ConsultarLibros");
         btnMenu.add(mitConsultaLibros);
 
         MenuDeBarra.add(btnMenu);
 
-        version.setText("version");
+        version.setBackground(new java.awt.Color(255, 51, 0));
+        version.setForeground(new java.awt.Color(0, 0, 51));
+        version.setText("Version");
         MenuDeBarra.add(version);
 
         setJMenuBar(MenuDeBarra);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(95, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(126, 126, 126)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(jLabel3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
-                .addGap(65, 65, 65)
-                .addComponent(jLabel2)
-                .addContainerGap(72, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -134,6 +122,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JMenuItem mitConsultaLibros;
     private javax.swing.JMenuItem mitLibro;
     private javax.swing.JMenu version;
