@@ -4,28 +4,26 @@ import entidades.Libro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.MetodosModeloDeLibro;
-import vista.GestionarLibro;
+import modelo.MetodosListaPrestamo;
+import vista.ListaLibrosPrestados;
 
 
-public class LibroController implements ActionListener{
+public class PrestamosListaController implements ActionListener{
     
     private final Libro modelo;
-    private final MetodosModeloDeLibro consultas;
-    private final GestionarLibro vista;
+    private final MetodosListaPrestamo consultas;
+    private final ListaLibrosPrestados vista;
 
-    public LibroController(Libro modelo, MetodosModeloDeLibro consultas, GestionarLibro vista) {
+    public PrestamosListaController(Libro modelo, MetodosListaPrestamo consultas, ListaLibrosPrestados vista) {
         this.modelo = modelo;
         this.consultas = consultas;
         this.vista = vista;
-        this.vista.btnAgregar.addActionListener(this);
-        this.vista.btnModificar.addActionListener(this);
         this.vista.btnEliminar.addActionListener(this);
         this.vista.btnLimpiar.addActionListener(this);
         this.vista.btnBuscar.addActionListener(this);
     }
     public void iniciar(){
-        vista.setTitle("Productos");
+        vista.setTitle("Consulta de libro");
         vista.setLocationRelativeTo(null);
         vista.txtId.setVisible(false);
     }
@@ -42,37 +40,8 @@ public class LibroController implements ActionListener{
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        // boton guardar
-        if (e.getSource()==vista.btnAgregar) {
-            modelo.setCodigo((vista.txtCodigo.getText()));
-            modelo.setNombre(vista.txtNombre.getText());
-            modelo.setEditorial(vista.txtEditorial.getText());
-            modelo.setGenero(vista.txtGenero.getText());
-            if (consultas.registrar(modelo)) {
-                JOptionPane.showMessageDialog(null, "se guardo registro");
-                limpiar();
-            }else{
-                JOptionPane.showMessageDialog(null, "error al guardar");
-                limpiar();
-            }
-        }
-        //btn modificar
-         if (e.getSource()==vista.btnModificar) {
-            modelo.setId(Integer.parseInt(vista.txtCodigo.getText()));
-            modelo.setCodigo((vista.txtCodigo.getText()));
-            modelo.setNombre(vista.txtNombre.getText());
-            modelo.setEditorial(vista.txtEditorial.getText());
-            modelo.setGenero(vista.txtGenero.getText());
-            if (consultas.modificar(modelo)) {
-                JOptionPane.showMessageDialog(null, "se modifico registro");
-                limpiar();
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "error al modificar");
-                limpiar();
-            }
-        }
-         //btn eliminar
+        
+        //btn eliminar
           if (e.getSource()==vista.btnEliminar) {
             modelo.setId(Integer.parseInt(vista.txtId.getText()));
             if (consultas.eliminar(modelo)) {

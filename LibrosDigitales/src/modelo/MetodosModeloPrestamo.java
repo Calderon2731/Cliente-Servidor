@@ -11,12 +11,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 
-public class MetodosModelo extends ConectarBD{
+public class MetodosModeloPrestamo extends ConectarBD{
     
     public boolean registrar(Libro libro){
         ConectarBD conn = new ConectarBD();
         PreparedStatement ps;
-        String sql = "INSERT INTO Libro (Codigo, Nombre, Editorial, Genero) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO prestamo (Codigo, Nombre, Editorial, Genero) VALUES (?,?,?,?)";
         try {
          ps = (PreparedStatement) conn.crearPreparedStatment(sql);  
         ps.setString(1, libro.getCodigo());
@@ -39,7 +39,7 @@ public class MetodosModelo extends ConectarBD{
         try {
              ConectarBD conn = new ConectarBD();
              Statement st = (Statement) conn.CrearStatment();
-             ResultSet rs = st.executeQuery("SELECT * FROM libro");
+             ResultSet rs = st.executeQuery("SELECT * FROM prestamo");
              while(rs.next()){
                  Libro lib = new Libro(rs.getInt("iD"),
                                         rs.getString("codigo"),
@@ -51,7 +51,7 @@ public class MetodosModelo extends ConectarBD{
              rs.close();
              conn.cerrarConexion();
         } catch (SQLException e) {
-          Logger.getLogger(MetodosModelo.class.getName()).log(Level.SEVERE,null,e);  
+          Logger.getLogger(MetodosModeloPrestamo.class.getName()).log(Level.SEVERE,null,e);  
         }
         return miListaLibro;
     }
@@ -74,53 +74,13 @@ public class MetodosModelo extends ConectarBD{
             rs.close();
             conn.cerrarConexion();
         } catch (SQLException e) {
-            Logger.getLogger(MetodosModelo.class.getName()).log(Level.SEVERE,null,e);              
+            Logger.getLogger(MetodosModeloPrestamo.class.getName()).log(Level.SEVERE,null,e);              
         }
         return miListaLibro;
     }
+
     
-    public boolean modificar(Libro libro){
-        ConectarBD conn = new ConectarBD();
-        PreparedStatement ps;
-        
-         String sql = "UPDATE libro SET Codigo=?, Nombre=?, Editorial=?, Genero=? WHERE Id=?";
-         
-         try{
-             ps = (PreparedStatement) conn.crearPreparedStatment(sql);
-             
-             ps.setString(1, libro.getCodigo());
-             ps.setString(2, libro.getNombre());
-             ps.setString(3, libro.getEditorial());
-             ps.setString(4, libro.getGenero());
-             ps.setInt(5, libro.getId());
-             ps.execute();
-             
-             return true;
-         }catch(SQLException e){
-             System.err.println(e);
-             return false;
-         }finally{
-             conn.cerrarConexion();
-         }   
-    }
-    
-    public boolean eliminar(Libro libro){
-        ConectarBD conn = new ConectarBD();
-        PreparedStatement ps;
-        String sql = "DELETE FROM Libro WHERE codigo=?";
-        
-        try{
-            ps = (PreparedStatement) conn.crearPreparedStatment(sql);
-            ps.setString(1, libro.getCodigo());
-            ps.execute();
-            return true;
-        }catch(SQLException e){
-            System.err.println(e);
-            return false;
-        }finally{
-            conn.cerrarConexion();
-        }
-    }
+   
     
     public boolean buscar(Libro libro){
          ConectarBD conn = new ConectarBD();

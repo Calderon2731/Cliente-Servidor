@@ -3,7 +3,7 @@ package vista;
 
 import controlador.LibroController;
 import entidades.Libro;
-import modelo.MetodosModelo;
+import modelo.MetodosModeloDeLibro;
 
 
 public class Administrador extends javax.swing.JFrame {
@@ -75,10 +75,9 @@ public class Administrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mitLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitLibroActionPerformed
-             /*GL.setVisible(true);
-        GL.setLocationRelativeTo(null);*/   
+            
         Libro lib = new Libro();
-        MetodosModelo MetodoModelo = new MetodosModelo();
+        MetodosModeloDeLibro MetodoModelo = new MetodosModeloDeLibro();
         GestionarLibro GL = new GestionarLibro();
         LibroController controlador = new LibroController(lib,MetodoModelo,GL);
        
