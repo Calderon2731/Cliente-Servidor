@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3308
--- Tiempo de generación: 30-07-2025 a las 00:13:16
+-- Tiempo de generación: 09-08-2025 a las 16:57:24
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -40,8 +40,33 @@ CREATE TABLE `libro` (
 --
 
 INSERT INTO `libro` (`Id`, `Codigo`, `Nombre`, `Editorial`, `Genero`) VALUES
-(1, '1', 'CienciaDeDatos', 'RanMa', 'cientifico'),
-(2, '2', 'Estructura de datos', 'RanMa', 'Noliterario');
+(1, '1', 'Ciencias', 'RanMa', 'cientifico'),
+(2, '2', 'Estructuras', 'RanMa', 'Noliterario'),
+(7, '7', 'Calidad del software', 'techICN', 'Cientifico'),
+(9, '9', 'Gestion Empresarial', 'RanMa', 'noLiterario'),
+(10, '10', 'ClienteServidor', 'Universidad Catolica', 'cientifico'),
+(11, '11', 'fenomenos sociales', 'social', 'novela');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `prestamo`
+--
+
+CREATE TABLE `prestamo` (
+  `Id` int(11) NOT NULL,
+  `Codigo` varchar(50) NOT NULL,
+  `Nombre` varchar(100) NOT NULL,
+  `Editorial` varchar(30) NOT NULL,
+  `Genero` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `prestamo`
+--
+
+INSERT INTO `prestamo` (`Id`, `Codigo`, `Nombre`, `Editorial`, `Genero`) VALUES
+(1, '11', 'fenomenos sociales', 'social', 'novela');
 
 -- --------------------------------------------------------
 
@@ -77,6 +102,12 @@ ALTER TABLE `libro`
   ADD PRIMARY KEY (`Id`);
 
 --
+-- Indices de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+  ADD PRIMARY KEY (`Id`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -90,7 +121,13 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `libro`
 --
 ALTER TABLE `libro`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `prestamo`
+--
+ALTER TABLE `prestamo`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
