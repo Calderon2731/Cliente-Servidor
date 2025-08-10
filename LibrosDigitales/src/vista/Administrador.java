@@ -18,7 +18,7 @@ public class Administrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         MenuDeBarra = new javax.swing.JMenuBar();
         btnMenu = new javax.swing.JMenu();
         mitLibro = new javax.swing.JMenuItem();
@@ -29,19 +29,22 @@ public class Administrador extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 60, 242, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/admin.png"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, -1, 167));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/apoyo (2).png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 80, 260, 250));
 
-        jLabel3.setBackground(new java.awt.Color(255, 51, 0));
-        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel3.setText("BIENVENIDO A MENU ADMINISTRADOr");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, 25));
+        jLabel3.setBackground(new java.awt.Color(0, 0, 51));
+        jLabel3.setFont(new java.awt.Font("Perpetua Titling MT", 1, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 51, 0));
+        jLabel3.setText("BIENVENIDo");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 20, -1, 40));
 
-        jLabel5.setFont(new java.awt.Font("Perpetua Titling MT", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 51));
-        jLabel5.setText("HOLA");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 50, 70, -1));
+        jLabel4.setFont(new java.awt.Font("Perpetua Titling MT", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 51));
+        jLabel4.setText("Menu administrador");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, -1, -1));
+
+        MenuDeBarra.setBackground(new java.awt.Color(255, 51, 0));
+        MenuDeBarra.setForeground(new java.awt.Color(0, 0, 51));
 
         btnMenu.setBackground(new java.awt.Color(255, 51, 0));
         btnMenu.setForeground(new java.awt.Color(0, 0, 51));
@@ -123,7 +126,7 @@ public class Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenuItem mitConsultaLibros;
     private javax.swing.JMenuItem mitLibro;
     private javax.swing.JMenu version;

@@ -85,6 +85,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Contraseña");
 
         txtUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 51)));
+        txtUsuario.setCaretColor(new java.awt.Color(0, 0, 51));
         txtUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUsuarioActionPerformed(evt);
@@ -163,12 +164,13 @@ public class Login extends javax.swing.JFrame {
         btnRegistro.setBackground(new java.awt.Color(0, 0, 51));
         btnRegistro.setForeground(new java.awt.Color(255, 255, 255));
         btnRegistro.setText("Registrar Usuario");
+        btnRegistro.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnRegistro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistroActionPerformed(evt);
             }
         });
-        jPanel2.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, -1, 50));
+        jPanel2.add(btnRegistro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 110, 50));
 
         txtNombre.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 51)));
         txtNombre.addActionListener(new java.awt.event.ActionListener() {
@@ -200,6 +202,7 @@ public class Login extends javax.swing.JFrame {
         comboCargo.setBackground(new java.awt.Color(0, 0, 51));
         comboCargo.setForeground(new java.awt.Color(255, 255, 255));
         comboCargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccionar", "Administrador", "Estudiante" }));
+        comboCargo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         comboCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboCargoActionPerformed(evt);
