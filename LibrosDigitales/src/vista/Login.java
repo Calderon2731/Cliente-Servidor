@@ -277,8 +277,8 @@ public class Login extends javax.swing.JFrame {
                     if (cargo.equalsIgnoreCase("Estudiante")) {
                         
                         //redirecciona a otro formulario
-                        Estudiante es = new Estudiante();
-                        dispose();
+                        estudianteMenu es = new estudianteMenu();
+                        
                         es.setVisible(true);
                         //redireccion a otra ventana el codigo de arriba
                     }
