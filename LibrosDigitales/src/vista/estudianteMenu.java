@@ -87,13 +87,19 @@ public class estudianteMenu extends javax.swing.JFrame {
         Libro lib = new Libro();
         MetodosListaPrestamo modelo = new MetodosListaPrestamo();
         PrestamosListaController Controlador = new PrestamosListaController(lib, modelo, vista);
+       vista.setTitle("Menu estudiantil");
+       vista.setLocationRelativeTo(null);
+        
+        
     }//GEN-LAST:event_mitEstanteriaActionPerformed
 
     private void mitConsultarLibroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mitConsultarLibroActionPerformed
-             ConsultasLibro CL = new ConsultasLibro();
+             ConsultasLibro vista = new ConsultasLibro();
             Libro lib = new Libro();
             MetodosModeloPrestamo MP = new MetodosModeloPrestamo();
-        PrestamoController Prestamo = new PrestamoController(lib, MP, CL);
+        PrestamoController Prestamo = new PrestamoController(lib, MP, vista);
+        vista.setTitle("consulta de libros");
+        vista.setLocationRelativeTo(null);
     }//GEN-LAST:event_mitConsultarLibroActionPerformed
 
     /**
@@ -127,6 +133,7 @@ public class estudianteMenu extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new estudianteMenu().setVisible(true);
+                
             }
         });
     }

@@ -278,8 +278,9 @@ public class Login extends javax.swing.JFrame {
                         
                         //redirecciona a otro formulario
                         estudianteMenu es = new estudianteMenu();
-                        
+                        dispose();
                         es.setVisible(true);
+                        es.setLocationRelativeTo(null);
                         //redireccion a otra ventana el codigo de arriba
                     }
                     if (cargo.equalsIgnoreCase("Administrador")) {
